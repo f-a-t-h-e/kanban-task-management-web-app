@@ -61,6 +61,7 @@
                     type="text"
                     value={column.name}
                     class="grow bg-transparent px-4 py-2 border border-secondary outline-none text-accent rounded-md focus:border-accent
+                    w-full
                     invalid:border-red-500"
                     required
                     on:change={(e) => {
@@ -179,6 +180,7 @@
                     type="text"
                     value={column.name}
                     class="grow bg-transparent px-4 py-2 border border-secondary outline-none text-accent rounded-md focus:border-accent cursor-pointer focus:cursor-text
+                    w-full
                     invalid:border-red-500"
                     required
                     minlength="1"
@@ -618,6 +620,7 @@
                     type="text"
                     value={subtask.name}
                     class="grow bg-transparent px-4 py-2 border border-secondary outline-none text-accent rounded-md focus:border-accent
+                    w-full
                     invalid:border-red-500"
                     required
                     on:change={(e) => {
@@ -853,6 +856,7 @@
                     type="text"
                     value={subtask.name}
                     class="grow bg-transparent px-4 py-2 border border-secondary outline-none text-accent rounded-md focus:border-accent
+                    w-full
                     invalid:border-red-500"
                     required
                     on:change={(e) => {
