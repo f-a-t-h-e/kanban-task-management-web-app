@@ -24,5 +24,53 @@
 
 ::-webkit-scrollbar-corner {
   /* background: rgba(0, 0, 0, 0.5); */
-  @apply bg-secondary/65 rounded-full
+  @apply bg-secondary/65 rounded-full;
+}
+
+@layer base {
+  root {
+    --color-primary: 99 95 199;
+    --color-secondary: 130 143 163;
+    --color-accent: 255 255 255;
+    --color-neutral: 32 33 44;
+    --color-base-100: 43 44 55;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    /* Dark mode styles here */
+    :root {
+      --color-primary: 99 95 199;
+      --color-secondary: 130 143 163;
+      --color-accent: 255 255 255;
+      --color-neutral: 32 33 44;
+      --color-base-100: 43 44 55;
+    }
+  }
+
+  @media (prefers-color-scheme: light), (prefers-color-scheme: no-preference) {
+    /* Light mode styles here */
+    :root {
+      --color-primary: 99 95 199;
+      --color-secondary: 130 143 163;
+      --color-accent: 0 0 0;
+      --color-neutral: 244 247 253;
+      --color-base-100: 255 255 255;
+    }
+  }
+
+  [data-theme="dark"] {
+    --color-primary: 99 95 199;
+    --color-secondary: 130 143 163;
+    --color-accent: 255 255 255;
+    --color-neutral: 32 33 44;
+    --color-base-100: 43 44 55;
+  }
+
+  [data-theme="light"] {
+    --color-primary: 99 95 199;
+    --color-secondary: 130 143 163;
+    --color-accent: 0 0 0;
+    --color-neutral: 244 247 253;
+    --color-base-100: 255 255 255;
+  }
 }

@@ -961,22 +961,22 @@
                       on:click={(e) => {
                         dialogWindowStore.update((c) => {
                           if (c.isOpen && c.option === "add-task") {
-                            if ($currentBoard) {
-                              const colIndex = $currentBoard.columns.findIndex(
-                                (col) => col.id === c.task.status.id
-                              );
-                              if (colIndex >= 0) {
-                                const taskIndex = $currentBoard.columns[
-                                  colIndex
-                                ].tasks.findIndex((t) => t.id === c.task.id);
-                                if (taskIndex >= 0) {
-                                  currentBoard.handleUpdate(
-                                    `${colIndex}_${taskIndex}`,
-                                    ci.toString()
-                                  );
-                                }
-                              }
-                            }
+                            // if ($currentBoard) {
+                            //   const colIndex = $currentBoard.columns.findIndex(
+                            //     (col) => col.id === c.task.status.id
+                            //   );
+                            //   if (colIndex >= 0) {
+                            //     const taskIndex = $currentBoard.columns[
+                            //       colIndex
+                            //     ].tasks.findIndex((t) => t.id === c.task.id);
+                            //     if (taskIndex >= 0) {
+                            //       currentBoard.handleUpdate(
+                            //         `${colIndex}_${taskIndex}`,
+                            //         ci.toString()
+                            //       );
+                            //     }
+                            //   }
+                            // }
                             c.task.status = {
                               id: column.id,
                               name: column.name,
@@ -1003,8 +1003,6 @@
                   $dialogWindowStore.isOpen &&
                   $dialogWindowStore.option === "add-task"
                 ) {
-                  console.log("add");
-                  
                   const newTask = $dialogWindowStore.task;
                   currentBoard.update((cur) => {
                     cur?.columns.find((col) =>{

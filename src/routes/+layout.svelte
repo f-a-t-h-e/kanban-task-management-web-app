@@ -36,8 +36,8 @@
 
   // let minW:number;
   // let maxH:number;
+  let theme="dark" as "dark"|"light";
 </script>
-
 <DialogWindow />
 <!-- <svelte:window bind:innerHeight={maxH}></svelte:window> -->
 <div class="h-screen flex flex-col">
@@ -81,7 +81,7 @@
 
     <div class="ms-auto flex h-full items-center">
       <button
-        class="py-1 px-3 bg-primary text-accent rounded-full text-xl font-semibold mx-2
+        class="py-1 px-3 bg-primary text-white rounded-full text-xl font-semibold mx-2
         disabled:opacity-55 disabled:cursor-not-allowed"
         on:click={() => {
           if ($currentBoard) {
@@ -186,9 +186,9 @@
                   class="
                     flex items-center text-1xl gap-2 ps-5 w-60 py-4
                     cursor-pointer transition-all duration-500
-                    hover:bg-accent hover:text-primary hover:rounded-e-[5rem] hover:duration-300
+                    hover:bg-primary/50 hover:text-primary hover:rounded-e-[5rem] hover:duration-300
                     {$currentBoard?.id === board.id
-                    ? 'text-accent bg-primary rounded-e-[5rem]'
+                    ? 'text-white bg-primary rounded-e-[5rem]'
                     : 'text-secondary rounded-e-none'}
           "
                   on:click={() => {
@@ -220,10 +220,10 @@
           </ul>
           <button
             class="flex items-center gap-2 text-primary font-bold
-            mb-16
+            mb-8
       text-1xl py-4 mt-4 mx-auto w-full justify-center
       cursor-pointer transition-all duration-500
-      hover:bg-accent hover:rounded-[5rem] hover:duration-300
+      hover:bg-primary/50 hover:rounded-[5rem] hover:duration-300
       rounded-none"
             on:click={() => {
               dialogWindowStore.open({
@@ -251,6 +251,17 @@
             >
             <span> Create New Board </span>
           </button>
+          <div class="bg-neutral rounded-md p-2 flex items-center justify-center text-2xl gap-2 mx-4 mb-16">
+            <span class="text-secondary"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M234 26h44v92h-44zm0 368h44v92h-44zm104.025-251.143 65.054-65.054 31.113 31.113-65.054 65.054zM77.815 403.074l65.054-65.054 31.113 31.113-65.054 65.054zM394 234h92v44h-92zm-368 0h92v44H26zm312.029 135.14 31.112-31.113 65.054 65.054-31.112 31.112zM77.802 108.92l31.113-31.113 65.054 65.054-31.113 31.112zM256 358a102 102 0 1 1 102-102 102.12 102.12 0 0 1-102 102z"></path></svg></span>
+            <button class="flex items-center h-7 w-16 rounded-full bg-primary relative"
+            on:click={()=>{
+              theme = theme == "dark" ? "light" : "dark";
+              document.body.setAttribute("data-theme", theme);
+            }}>
+              <span class="absolute top-0 h-7 rounded-full w-7 bg-accent transition-all {theme == "dark" ? "start-full -translate-x-full" :"start-0 translate-x-0"}"></span>
+            </button>
+            <span class="text-secondary"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M283.211 512c78.962 0 151.079-35.925 198.857-94.792 7.068-8.708-.639-21.43-11.562-19.35-124.203 23.654-238.262-71.576-238.262-196.954 0-72.222 38.662-138.635 101.498-174.394 9.686-5.512 7.25-20.197-3.756-22.23A258.156 258.156 0 0 0 283.211 0c-141.309 0-256 114.511-256 256 0 141.309 114.511 256 256 256z"></path></svg></span>
+          </div>
         </div>
       {/if}
       <button class="hidden md:flex items-center gap-4 bg-base-100 border border-neutral rounded-e-full py-4 px-8 text-xl text-secondary hover:text-accent fixed start-0 bottom-4 z-10"
